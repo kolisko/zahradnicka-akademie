@@ -1,0 +1,73 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-geist-sans);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) * .6);
+  --radius-md: calc(var(--radius) * .8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+}
+
+:root {
+  --background: oklch(0.978 0.013 92);
+  --foreground: oklch(0.265 0.025 118);
+  --card: oklch(0.995 0.007 92);
+  --card-foreground: oklch(0.265 0.025 118);
+  --primary: oklch(0.39 0.096 143);
+  --primary-foreground: oklch(0.985 0.01 100);
+  --secondary: oklch(0.91 0.05 93);
+  --secondary-foreground: oklch(0.29 0.045 115);
+  --muted: oklch(0.935 0.018 93);
+  --muted-foreground: oklch(0.52 0.025 104);
+  --accent: oklch(0.905 0.055 132);
+  --accent-foreground: oklch(0.31 0.075 140);
+  --border: oklch(0.88 0.022 92);
+  --ring: oklch(0.48 0.1 143);
+  --radius: .75rem;
+}
+
+.dark {
+  --background: oklch(0.19 0.025 128);
+  --foreground: oklch(0.94 0.018 93);
+  --card: oklch(0.235 0.028 128);
+  --card-foreground: oklch(0.94 0.018 93);
+  --primary: oklch(0.72 0.12 139);
+  --primary-foreground: oklch(0.17 0.03 132);
+  --secondary: oklch(0.30 0.035 116);
+  --secondary-foreground: oklch(0.94 0.018 93);
+  --muted: oklch(0.27 0.025 125);
+  --muted-foreground: oklch(0.72 0.025 100);
+  --accent: oklch(0.32 0.055 137);
+  --accent-foreground: oklch(0.91 0.05 120);
+  --border: oklch(1 0 0 / 12%);
+  --ring: oklch(0.65 0.11 140);
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  html { @apply scroll-smooth font-sans; }
+  body { @apply bg-background text-foreground; }
+  ::selection { background: oklch(0.78 0.12 138 / .45); }
+}
