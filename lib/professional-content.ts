@@ -337,4 +337,223 @@ export const professionalChapters: Record<string, ProfessionalChapter> = {
       { title: 'Level 2 Certificate in the Principles of Plant Growth and Development', organisation: 'Royal Horticultural Society', url: 'https://www.rhs.org.uk/education-learning/pdf/qualifications/level-2/level-2-cert-in-the-principles-of-plant-growth.pdf', scope: 'profesní rozsah půdoznalství a výživy' },
     ],
   },
+
+  rostliny: {
+    moduleId: 'rostliny',
+    edition: 'Odborná verze 1.0',
+    estimatedPages: 26,
+    prerequisites: ['botanická morfologie', 'práce s lupou', 'základy stanovištní ekologie'],
+    abstract: 'Profesionální určování není hádání podle fotografie květu. Kapitola učí popsat rostlinu standardizovanými znaky, pracovat s vědeckým názvem, ověřit identitu ve více zdrojích a převést botanické určení do bezpečné volby pro konkrétní stanoviště.',
+    sections: [
+      {
+        title: '1. Identita rostliny a taxonomický záznam',
+        paragraphs: [
+          'Vědecké jméno je pracovní identifikátor, nikoli ozdoba seznamu. Binomické jméno tvoří rodové jméno s velkým počátečním písmenem a druhové epiteton s malým; obě části se píší kurzívou. Autor jména, poddruh, varieta, hybridní znak a kultivar doplňují různé druhy informace. Kultivar se píše bez kurzívy v jednoduchých uvozovkách, například Acer campestre ‘Elsrijk’. Obchodní značka nemusí být kultivar a nesmí jej v technickém seznamu nahrazovat.',
+          'Taxonomie se mění, protože nové důkazy upravují hranice rodů a druhů. Starší jméno může být synonymem, ne nutně chybou. Profesionální záznam proto uchovává název použitý v projektu, přijaté jméno podle zvolené autoritativní databáze, případné synonymum a datum ověření. Bez data nelze později rozlišit chybu od legitimní změny taxonomie.',
+          'Identita kultivaru se neověřuje pouze podle druhu. Rozhodují znaky deklarované při jeho popisu a pravost množitelského materiálu. Rostlina vypěstovaná ze semene kultivaru obvykle není tentýž kultivar, protože sexuální rozmnožování geny rekombinuje. U podnožovaných dřevin se navíc eviduje podnož, protože ovlivňuje vzrůst, kořeny i provozní nároky.',
+        ],
+        table: {
+          caption: 'Jak číst úplné jméno rostliny',
+          headers: ['Prvek', 'Význam', 'Zápis', 'Příklad'],
+          rows: [
+            ['Rod', 'skupina příbuzných druhů', 'velké písmeno, kurzíva', 'Acer'],
+            ['Druh', 'taxonomická jednotka pod rodem', 'malé písmeno, kurzíva', 'campestre'],
+            ['Hybrid', 'kříženec taxonů', 'znak ×', 'Platanus × hispanica'],
+            ['Kultivar', 'udržovaná pěstovaná forma', 'jednoduché uvozovky, bez kurzívy', '‘Elsrijk’'],
+            ['Obchodní označení', 'marketingové jméno', 'podle registračních pravidel', 'nemusí být totožné s kultivarem'],
+          ],
+        },
+        warning: 'Aplikace rozpoznávající rostliny může vytvořit kandidátní seznam, ale sama není dostatečným dokladem identity pro projekt, nákup, toxikologické rozhodnutí ani regulovaný druh.',
+      },
+      {
+        title: '2. Systematický morfologický popis',
+        paragraphs: [
+          'Určování začíná popisem neznámého vzorku bez předčasného přiřazení jména. Zaznamenává se životní forma, habitus, typ výhonu, postavení listů, přítomnost palistů, typ a členění listu, žilnatina, okraj, ochlupení, pupeny, jizvy, kůra, květenství, stavba květu, plod a semeno. Každý znak musí být pozorován na více typických částech, protože juvenilní, stínové, poškozené a bujné výhony mohou vypadat odlišně.',
+          'Postavení listů je zvlášť hodnotné: střídavé, vstřícné, přeslenité nebo přízemní. U složeného listu je nutné rozlišit lístek od celého listu; pupen se nachází v úžlabí celého listu, nikoli jednotlivého lístku. Tato kontrola brání častému omylu, kdy je lichozpeřený list považován za větévku s jednoduchými listy.',
+          'Květ se popisuje podle souměrnosti, počtu a srůstu obalů, tyčinek, postavení semeníku a typu květenství. Plod není obecné označení pro „bobuli“: rozlišují se mimo jiné nažky, oříšky, lusky, tobolky, peckovice, malvice a pravé bobule. Pro určování dřevin mimo sezonu jsou klíčové pupeny, uspořádání větvení, listové jizvy, lenticely, dřeň, trny a textura kůry.',
+        ],
+        table: {
+          caption: 'Minimální fotografická dokumentace neznámé rostliny',
+          headers: ['Záběr', 'Co musí být vidět', 'Měřítko', 'Proč je důležitý'],
+          rows: [
+            ['Celek', 'habitus a okolní stanoviště', 'osoba nebo známý objekt', 'ukazuje velikost, růst a kontext'],
+            ['Výhon', 'uzly, postavení listů a pupeny', 'pravítko', 'rozlišuje větvení a listové uspořádání'],
+            ['List', 'líc, rub, řapík a báze', 'milimetrové měřítko', 'nese většinu vegetativních znaků'],
+            ['Květ/plod', 'celek i řez', 'pravítko', 'ověřuje generativní znaky'],
+            ['Kůra/pupen', 'ostrý detail bez digitálního zoomu', 'malé měřítko', 'umožňuje zimní určení dřeviny'],
+          ],
+        },
+        procedure: {
+          title: 'Určení neznámé rostliny s auditní stopou',
+          purpose: 'Dospět k ověřenému jménu, které lze bezpečně použít v dokumentaci.',
+          steps: [
+            'Zapište lokalitu, datum, stanoviště, životní formu a přibližnou velikost.',
+            'Pořiďte standardní sadu fotografií a popište znaky bez použití názvu kandidáta.',
+            'Určete čeleď nebo širší skupinu pomocí určovacího klíče, nikoli obrázkové podobnosti.',
+            'Dojděte ke kandidátnímu druhu a porovnejte každý diagnostický znak v popisu, včetně znaků, které kandidát vylučují.',
+            'Ověřte přijaté jméno, synonyma a rozšíření v autoritativní taxonomické databázi.',
+            'U rizikového rozhodnutí požádejte specialistu nebo herbář; uveďte míru jistoty a chybějící znak.',
+          ],
+          record: 'Původní fotografie, popis znaků, použitý klíč a vydání, kandidáti, vylučovací znaky, přijaté jméno, databáze a datum ověření.',
+        },
+      },
+      {
+        title: '3. Určení musí předcházet pěstitelskému doporučení',
+        paragraphs: [
+          'Po určení se teprve zjišťují biologické a provozní vlastnosti. Rodové doporučení je často příliš široké: druhy téhož rodu mohou pocházet z mokřadů i suchých skal, být keřem nebo stromem a reagovat rozdílně na mráz, pH či řez. Kultivar může měnit velikost, habitus a barvu, ale nemusí změnit základní potřebu druhu. Každá vlastnost se proto váže k přesnému taxonu a zdroji.',
+          'Otužilost popisuje přežití určitého chladu, ne celkovou vhodnost klimatu. Rostlinu může poškodit předčasné rašení, pozdní mráz, vysušující vítr, střídání teplot, letní horko nebo nedostatečná délka vegetace. Zóny minimálních teplot jsou pouze první filtr. Profesionální výběr kombinuje extrémy, mikroklima, půdní vodu, tepelnou sumu a provenienci materiálu.',
+          'Konečná velikost není pevné číslo. Závisí na věku, klimatu, půdě, konkurenci, podnoži a vedení, ale katalogový interval umožňuje rozpoznat zjevnou kolizi. Posuzuje se šířka koruny, výška, rychlost růstu, kořenový prostor, opad, plody, trny, lámavost, toxicita a reakce na řez. „Lze udržovat řezem“ není omluva pro systematicky špatně zvolený taxon.',
+        ],
+        table: {
+          caption: 'Minimální karta druhu pro projekt',
+          headers: ['Oblast', 'Povinné údaje', 'Důkaz'],
+          rows: [
+            ['Identita', 'přijaté jméno, kultivar, synonymum', 'taxonomická databáze a dodavatel'],
+            ['Prostor', 'výška, šířka, habitus, tempo', 'více dlouhodobých zdrojů'],
+            ['Stanoviště', 'světlo, voda, pH, textura, vítr, teplota', 'odborné popisy a místní zkušenost'],
+            ['Rizika', 'toxicita, alergie, invazivita, trny, plody', 'regulační a odborné databáze'],
+            ['Péče', 'řez, opora, zálivka, obnova', 'biologie druhu a provozní plán'],
+          ],
+        },
+        fieldExample: { title: 'Příklad: „malý strom“ pod vedením', text: 'Prodejní výška 250 cm neříká nic o konečném objemu. Projektant musí ověřit dospělou výšku a šířku, rychlost růstu, bezpečný odstup od vedení a možnost změny stanoviště. Volba velkého stromu s plánem pravidelného sesazování vytváří trvalý náklad a biologicky nevhodný zásah.' },
+      },
+      {
+        title: '4. Plevel, invazní taxon a biologické riziko',
+        paragraphs: [
+          'Plevel je provozní pojem: rostlina nežádoucí na konkrétním místě. Invazní nepůvodní druh je ekologická kategorie spojená se šířením a dopadem; regulovaný druh je právní kategorie. Tyto množiny se překrývají, ale nejsou totožné. Běžný původní druh může být plevelem v záhonu, aniž by byl invazní, a invazní druh může být na pozemku záměrně pěstován v rozporu s pravidly.',
+          'Strategie regulace vychází ze životního cyklu. Jednoleté druhy se zastavují před tvorbou semen a omezením narušované půdy. Vytrvalé druhy s oddenky, hlízami nebo kořenovými výběžky se mohou po fragmentaci množit; nevhodná rotavace problém rozšíří. U dřevin je třeba počítat s pařezovou a kořenovou výmladností. Likvidace nadzemní části není automaticky likvidací organismu.',
+          'Před prací se posuzuje toxicita při požití, kožní dráždivost, fototoxicita, alergenní pyl, trny, latex a riziko pro zvířata. U neznámé rostliny se ochranné prostředky volí konzervativně a materiál se nekompostuje, dokud není znám způsob bezpečné likvidace. Právní seznamy a povolené postupy se mění, proto se ověřují k datu zásahu.',
+        ],
+        procedure: {
+          title: 'Rozhodnutí o regulaci neznámé nežádoucí rostliny',
+          purpose: 'Zabránit rozšíření, expozici pracovníků a nelegálnímu nakládání.',
+          steps: [
+            'Práci omezte tak, aby nevznikala semena, fragmenty ani kontaminovaná zemina.',
+            'Určete taxon a vývojovou fázi; zaznamenejte rozsah populace a sousední pozemky.',
+            'Ověřte vegetativní obnovovací orgány, toxicitu a právní status v aktuálních zdrojích.',
+            'Zvolte metodu podle životního cyklu a cíle: prevence semen, vyčerpání zásob, odstranění orgánů nebo odborně povolený přípravek.',
+            'Stanovte způsob přepravy a likvidace, aby se materiál nerozšířil.',
+            'Naplánujte kontroly nejméně po dobu odpovídající perzistenci orgánů a semenné banky.',
+          ],
+          record: 'Mapa populace, fotografie, potvrzené jméno, právní zdroj a datum, metoda, množství odpadu, termíny následných kontrol.',
+        },
+      },
+    ],
+    sources: [
+      { title: 'Plants of the World Online', organisation: 'Royal Botanic Gardens, Kew', url: 'https://powo.science.kew.org/', scope: 'přijatá jména, synonyma, rozšíření a taxonomická opora' },
+      { title: 'World Checklist of Vascular Plants — methodology', organisation: 'Royal Botanic Gardens, Kew', url: 'https://powo.science.kew.org/about-wcvp', scope: 'způsob aktualizace a rozhodování o přijatých jménech' },
+      { title: 'Plant Finder and Selector', organisation: 'Royal Horticultural Society', url: 'https://www.rhs.org.uk/plants/search-form', scope: 'pěstitelské vlastnosti, otužilost a zahradní použití' },
+      { title: 'EPPO Global Database', organisation: 'European and Mediterranean Plant Protection Organization', url: 'https://www.eppo.int/RESOURCES/eppo_databases/global_database', scope: 'taxony, škodlivé organismy, hostitelé a regulační informace' },
+      { title: 'EPPO Lists of Invasive Alien Plants', organisation: 'EPPO', url: 'https://www.eppo.int/ACTIVITIES/invasive_alien_plants/iap_lists', scope: 'aktuálně hodnocené invazní rostliny a rizikové seznamy' },
+    ],
+  },
+
+  stanoviste: {
+    moduleId: 'stanoviste',
+    edition: 'Odborná verze 1.0',
+    estimatedPages: 27,
+    prerequisites: ['botanika', 'půdní profil', 'základy měření a mapování'],
+    abstract: 'Stanovištní analýza převádí proměnlivé podmínky pozemku do mapy omezení a příležitostí. Kapitola učí měřit světlo, teplotu, vodu, vítr a provoz v prostoru i čase a volit rostliny podle kombinace stresů, nikoli podle jediného katalogového symbolu.',
+    sections: [
+      {
+        title: '1. Stanoviště je časoprostorová mozaika',
+        paragraphs: [
+          'Makroklima popisuje širší oblast, topoklima polohu ve svahu a krajině a mikroklima bezprostřední okolí rostliny. Na jediném pozemku může být jižní stěna o mnoho stupňů teplejší než zastíněná sníženina, přestože obě místa sdílejí stejnou klimatickou stanici. Projektová analýza proto nezačíná seznamem rostlin, ale mapou ploch, hran, proudění a sezonních změn.',
+          'Podmínky nejsou nezávislé. Vítr zvyšuje výpar a mechanické zatížení; asfalt zvyšuje tepelný tok a často omezuje kořenový prostor; stín stromu znamená současně zachycení srážek a kořenovou konkurenci. Označení „polostín“ nevystihuje rozdíl mezi ranním sluncem, ostrým západním sluncem a světlým rozptýleným stínem.',
+          'Analýza musí zachytit i provoz: chůzi, pojezd, sníh se solí, odkládání materiálu, zavlažovací dosah, psy, děti, odraz světla od skla a budoucí stavbu. Biologicky vhodné místo může být provozně neudržitelné. Naopak správné technické uspořádání může výrazně rozšířit využitelný kořenový prostor a dostupnost vody.',
+        ],
+        table: {
+          caption: 'Vrstvy stanovištní mapy',
+          headers: ['Vrstva', 'Co zaznamenat', 'Kdy měřit', 'Rozhodnutí, které ovlivňuje'],
+          rows: [
+            ['Slunce a stín', 'hodiny přímého slunce, zdroj stínu, odraz', 'více hodin a sezon', 'výběr druhu, spon, závlaha'],
+            ['Voda', 'přítok, odtok, vsak, kaluže, okapy', 'sucho i déšť', 'modelace, půda, dešťová zahrada'],
+            ['Teplota', 'horké povrchy, mrazové kapsy, zimní osvit', 'extrémy a přechodná období', 'otužilost, rašení, ochrana'],
+            ['Vítr', 'směr, nárazy, turbulence, průchody', 'různé směry počasí', 'kotvení, větrolam, výpar'],
+            ['Provoz', 'trasy, zatížení, sůl, servisní přístup', 'pracovní i volný den', 'ochrana půdy, bezpečnost, údržba'],
+          ],
+        },
+        procedure: {
+          title: 'Sedmidenní základní audit stanoviště',
+          purpose: 'Vytvořit první ověřenou mapu před výběrem rostlin nebo návrhem zásahu.',
+          steps: [
+            'Založte měřítkový plán se severem, výškami, stavbami, sítěmi a stávající vegetací.',
+            'Ve třech časech dne zakreslete přímé slunce a stín; uveďte datum a oblačnost.',
+            'Po dešti zaznamenejte přítok, louže, erozní stopy a dobu mizení vody.',
+            'Odeberte půdní sondy v každé odlišné zóně a zapište profil, vlhkost, kořeny a zhutnění.',
+            'Během větru označte závětrná místa, zrychlené proudění mezi stavbami a turbulence za překážkami.',
+            'Zmapujte provoz, sůl, odhazování sněhu, servisní přístupy a zdroje tepla.',
+            'Seznamte limity a příležitosti a u každého uveďte důkaz, sezonní nejistotu a potřebné další měření.',
+          ],
+          record: 'Datovaný plán, fotografie ze stejných bodů, počasí, půdní sondy, srážka, doba odtoku a seznam předpokladů k ověření.',
+        },
+      },
+      {
+        title: '2. Světlo, teplota a fenologické riziko',
+        paragraphs: [
+          'Pro fotosyntézu je relevantní množství fotosynteticky aktivního záření, ale v běžné praxi se často začíná délkou a kvalitou přímého osvitu. Hodiny samy nestačí: dvě hodiny poledního letního slunce mají jinou intenzitu a tepelný účinek než dvě hodiny zimního rána. Listy adaptované na stín bývají tenčí a pracují efektivněji při nízkém světle, ale mají nižší kapacitu a menší ochranu proti náhlému nadbytku.',
+          'Teplota vzduchu není teplota listu, pupenu ani kořenů. Tmavý povrch a závětří mohou list zahřát nad vzduch, zatímco jasná bezvětrná noc ochlazuje povrchy vyzařováním. Pozdní mráz v době květu může poškodit reprodukční pletiva, i když dřevo danou zimní minimální teplotu běžně snáší. Otužilost a mrazové riziko kvetení jsou tedy rozdílné parametry.',
+          'Studený vzduch je hustší a za klidné noci stéká po svahu do sníženin. Plot, val nebo hustá výsadba může odtok zadržet a vytvořit mrazovou kapsu. Jižní expozice urychluje jarní vývoj, což může zvýšit riziko následného mrazu. Druh z teplého regionu nemusí být automaticky bezpečnější; důležité je načasování dormance a rašení.',
+        ],
+        table: {
+          caption: 'Rozlišení světelných situací',
+          headers: ['Situace', 'Hlavní charakter', 'Typické riziko', 'Co ověřit'],
+          rows: [
+            ['Ranní slunce', 'nižší teplota, rychlé oschnutí', 'časné jarní prohřátí', 'délka a zimní průběh'],
+            ['Západní slunce', 'vysoká teplota odpoledne', 'úžeh a vodní stres', 'odraz a dostupná voda'],
+            ['Suchý stín pod stromem', 'málo světla i vody', 'konkurence kořenů', 'srážkový stín a kořenový profil'],
+            ['Světlý stín', 'rozptýlené záření bez úpalu', 'nedostatek pro slunné druhy', 'celodenní intenzita a sezonní změna'],
+          ],
+        },
+        warning: 'Označení plné slunce, polostín a stín je orientační. Pro drahou nebo dlouhověkou výsadbu vždy popište dobu, intenzitu, sezonu a zdroj stínu.',
+      },
+      {
+        title: '3. Voda v profilu a na povrchu pozemku',
+        paragraphs: [
+          'Vodní režim začíná bilanční otázkou: odkud voda přichází, jak rychle se vsakuje, kde se ukládá, kudy odtéká a jak rychle se ztrácí evapotranspirací. Roční úhrn srážek nevypovídá o dostupnosti během kritického období. Intenzivní liják na zhutněné půdě může odtéct, zatímco dlouhé období s malými srážkami nenaplní hlubší profil.',
+          'Rozhraní vrstev může vodu dočasně zadržet. Jemnější zemina nad hrubší vrstvou nepředává vodu okamžitě, dokud se dostatečně nenasytí; jednoduchá vrstva štěrku na dně nádoby nebo výsadbové jámy proto nemusí zlepšit odvod a může vytvořit zavěšenou vodu výše. Odtok vyžaduje souvislou hydraulickou cestu a bezpečné místo, kam voda smí směřovat.',
+          'Kořenová dostupnost je kombinací objemu, potenciálu a rychlosti. Na mělké půdě nad skalou může být po dešti mokro a po týdnu sucho. V jílu je velká zásoba, ale pomalý přenos k rychle transpirujícím kořenům. Návrh musí zohlednit kořenovou hloubku druhu, plochu nezpevněné půdy, mulč, konkurenci a možnost závlahy během ujímání.',
+        ],
+        table: {
+          caption: 'Hydrologické pozorování a důsledky',
+          headers: ['Jev', 'Možné vysvětlení', 'Nutné ověření', 'Návrhová reakce'],
+          rows: [
+            ['Rychlý povrchový odtok', 'krusta, sklon, intenzivní déšť', 'infiltrace a struktura', 'zpomalení, pokryv, terénní prvky'],
+            ['Voda v jámě, okolí suché', 'texturové rozhraní nebo utěsnění boků', 'profil přes okraj jámy', 'plošná příprava a spojení s půdou'],
+            ['Mokro v zimě, sucho v létě', 'sezonní hladina a malá zásoba', 'sondy v obou obdobích', 'druhy snášející oba extrémy'],
+            ['Sucho pod korunou', 'intercepce a konkurence', 'vlhkost po dešti a kořeny', 'pokryv tolerantní k suchému stínu'],
+          ],
+        },
+        fieldExample: { title: 'Příklad: dešťová zahrada bez přepadu', text: 'Mělká sníženina může zvládnout běžnou srážku, ale při extrému se naplní. Bez bezpečného přepadu voda zamíří k domu nebo sousedovi. Návrh proto potřebuje infiltrační podklad, objem, zvolenou návrhovou událost, volnou výšku a předvídatelnou cestu přebytku.' },
+      },
+      {
+        title: '4. Vítr, městský stres a odolná výsadba',
+        paragraphs: [
+          'Vítr zvyšuje výměnu vzduchu a osychání listů, ale také transpiraci, mechanické namáhání a zimní vysychání. Nepropustná bariéra vytváří silné turbulence v závětří; účinný větrolam část proudění filtruje a chráněná vzdálenost závisí na výšce, propustnosti a orientaci. Úzké průchody mezi budovami mohou vítr naopak zrychlit.',
+          'Městské stanoviště kombinuje omezený kořenový prostor, zhutnění, tepelné sálání, zasolení, odražené světlo, poškození a nepravidelnou vodu. Tolerance jednoho stresu neznamená toleranci jejich kombinace. Druh snášející sucho v hluboké půdě nemusí zvládnout malou zasolenou jámu s horkým povrchem.',
+          'Odolnost nevzniká pouze seznamem „odolných druhů“. Vytváří ji dostatečný využitelný půdní objem, spojení kořenových prostorů, ochrana povrchu, kvalitní sadební materiál, správná výsadba a následná péče. Druhová a věková rozmanitost omezuje riziko plošného selhání jedním škůdcem nebo extrémem, ale směs musí být provozně a stanovištně kompatibilní.',
+        ],
+        procedure: {
+          title: 'Výběr druhu pomocí vylučovacích filtrů',
+          purpose: 'Zabránit výběru podle vzhledu dříve, než jsou splněny biologické a provozní podmínky.',
+          steps: [
+            'Vylučte taxony, které nesplní bezpečnost, prostor, právní status nebo minimální teplotu.',
+            'Vylučte taxony nekompatibilní s půdní vodou, pH, zasolením a dostupným kořenovým objemem.',
+            'Posuďte kombinované stresy: horko + sucho, mokro + mráz, stín + konkurence, vítr + stálezelenost.',
+            'Porovnejte dospělou velikost a provozní projevy s vedením, stavbou, cestou a údržbou.',
+            'Teprve mezi biologicky vhodnými kandidáty vybírejte habitus, kvetení, barvu a cenu.',
+            'Zapište rozhodovací důvody, nejistoty, náhradní taxon a požadavky následné péče.',
+          ],
+          record: 'Stanovištní karta, seznam vyloučených taxonů s důvodem, zdroje vlastností, finální kandidáti a podmínky úspěchu.',
+        },
+      },
+    ],
+    sources: [
+      { title: 'Choosing Plants Wisely', organisation: 'Penn State Extension', url: 'https://extension.psu.edu/choosing-plants-wisely', scope: 'provázání půdy, klimatu a potřeb rostliny' },
+      { title: 'Consider Soil pH Before Selecting Trees and Shrubs', organisation: 'Penn State Extension', url: 'https://extension.psu.edu/consider-soil-ph-before-selecting-trees-and-shrubs-for-landscape-use', scope: 'pH jako vylučovací kritérium výběru dřevin' },
+      { title: 'Developing a Tree Planting Plan', organisation: 'Penn State Extension', url: 'https://extension.psu.edu/developing-a-tree-planting-plan-for-your-community-project', scope: 'terénní posouzení kořenového prostoru, sítí a městských stresů' },
+      { title: 'Farmland Assessment Checklist', organisation: 'Penn State Extension', url: 'https://extension.psu.edu/farmland-assessment-checklist', scope: 'mikroklima, mrazové kapsy, voda, vítr a topografie' },
+      { title: 'Soil Health Assessment', organisation: 'USDA Natural Resources Conservation Service', url: 'https://www.nrcs.usda.gov/conservation-basics/soil/soil-health/soil-health-assessment', scope: 'infiltrace, půdní voda, struktura a kořenové podmínky' },
+    ],
+  },
 };
