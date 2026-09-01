@@ -14,11 +14,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.SITE_URL ?? 'http://localhost:3000'),
-  title: 'Zahradnická akademie — odborná wiki ve výstavbě',
+  title: 'Zahradnická akademie — odborná wiki',
   description:
-    'Postupně budovaná česká odborná wiki pro budoucí profesionální zahradníky s detailním výkladem, pracovními protokoly a zdroji.',
+    'Kompletní český teoretický základ pro budoucí profesionální zahradníky s detailním výkladem, pracovními protokoly a dohledatelnými zdroji.',
   openGraph: {
-    title: 'Zahradnická akademie — odborná wiki ve výstavbě',
+    title: 'Zahradnická akademie — odborná wiki',
     description: 'Detailní odborné kapitoly pro budoucí profesionální zahradníky, zpracované podle jednotného obsahového standardu.',
     images: [{ url: '/og.png', width: 1680, height: 945, alt: 'Zahradnická akademie — rostlina s odkrytým kořenovým systémem' }],
     locale: 'cs_CZ',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Zahradnická akademie — odborná wiki ve výstavbě',
+    title: 'Zahradnická akademie — odborná wiki',
     description: 'Detailní odborné kapitoly pro budoucí profesionální zahradníky.',
     images: ['/og.png'],
   },

@@ -180,12 +180,12 @@ function HomeView({ onView, completed }: { onView: (view: View) => void; complet
     <div className="mx-auto max-w-6xl px-5 py-8 sm:px-8 lg:px-12 lg:py-12">
       <section className="grid items-center gap-8 border-b pb-12 xl:grid-cols-[1.15fr_.85fr]">
         <div>
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border bg-card px-3 py-1.5 text-xs font-semibold text-primary shadow-sm"><Sprout size={14}/> Odborná wiki ve výstavbě</div>
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border bg-card px-3 py-1.5 text-xs font-semibold text-primary shadow-sm"><Sprout size={14}/> Odborná wiki · {professionalCount}/{modules.length} modulů</div>
           <h1 className="text-balance text-4xl font-semibold leading-[1.07] tracking-[-0.045em] sm:text-6xl">Od kořenů k řemeslu.</h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">Systematická česká učebnice pro budoucí profesionální zahradníky. Odborné kapitoly obsahují souvislý výklad, tabulky, diagnostické postupy, případové studie a dohledatelné zdroje.</p>
           <div className="mt-7 flex flex-wrap gap-3">
             <button onClick={() => onView('botanika')} className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/15">Začít první kapitolou <ArrowRight size={16}/></button>
-            <span className="inline-flex items-center rounded-full border bg-card px-5 py-3 text-sm font-medium">{professionalCount} odborné kapitoly · další se zpracovávají</span>
+            <span className="inline-flex items-center rounded-full border bg-card px-5 py-3 text-sm font-medium">{professionalCount} odborných kapitol · jednotný obsahový standard</span>
           </div>
         </div>
         <div className="overflow-hidden rounded-[2rem] border bg-card shadow-xl shadow-primary/10">
@@ -209,7 +209,7 @@ function HomeView({ onView, completed }: { onView: (view: View) => void; complet
               <div className="flex items-center justify-between"><span className="font-mono text-xs font-semibold text-primary">MODUL {String(index + 1).padStart(2, '0')}</span>{completed.includes(module.id) && <CheckCircle2 size={18} className="text-primary"/>}</div>
               <h3 className="mt-7 text-xl font-semibold tracking-tight">{module.title}</h3>
               <p className="mt-2 flex-1 text-sm leading-6 text-muted-foreground">{module.subtitle}</p>
-              <span className={`mt-4 w-fit rounded-full px-2.5 py-1 text-[11px] font-semibold ${professionalChapters[module.id] ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>{professionalChapters[module.id] ? 'ODBORNĚ ROZPRACOVÁNO' : 'ZATÍM STRUČNÁ OSNOVA'}</span>
+              <span className={`mt-4 w-fit rounded-full px-2.5 py-1 text-[11px] font-semibold ${professionalChapters[module.id] ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>{professionalChapters[module.id] ? 'ODBORNÁ KAPITOLA' : 'ZATÍM STRUČNÁ OSNOVA'}</span>
               <div className="mt-5 flex items-center gap-4 text-xs text-muted-foreground"><span className="flex items-center gap-1.5"><Clock3 size={14}/>{minutesLabel(module.minutes)}</span><span>{module.lessons.length} lekcí</span><ArrowRight size={16} className="ml-auto text-primary transition group-hover:translate-x-1"/></div>
             </button>
           ))}
