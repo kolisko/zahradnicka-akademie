@@ -40,85 +40,10 @@ function minutesLabel(minutes: number) {
   return `${hours} h${rest ? ` ${rest} min` : ''}`;
 }
 
-function PlantDiagram({ moduleId }: { moduleId: string }) {
-  if (moduleId === 'puda') {
-    return (
-      <svg viewBox="0 0 720 330" role="img" aria-labelledby="soil-title soil-desc" className="w-full">
-        <title id="soil-title">Zjednodušený půdní profil</title>
-        <desc id="soil-desc">Vrstvy organického opadu, ornice, podorničí a matečného substrátu s kořeny a vodou.</desc>
-        <rect width="720" height="330" rx="24" fill="#f4efe3" />
-        <path d="M0 55 Q100 38 190 55T370 52T550 51T720 45V0H0Z" fill="#dfead3" />
-        <path d="M0 55 Q150 42 260 56T500 52T720 48V112H0Z" fill="#5e3f26" />
-        <rect y="112" width="720" height="94" fill="#8b6847" />
-        <rect y="206" width="720" height="82" fill="#b18d63" />
-        <rect y="288" width="720" height="42" fill="#d1b990" />
-        <g stroke="#ead8b6" strokeWidth="3" fill="none" strokeLinecap="round">
-          <path d="M350 25v65c0 34-22 45-30 77s5 74-30 118" />
-          <path d="M352 82c38 38 66 50 73 102" />
-          <path d="M336 113c-48 25-79 52-82 111" />
-          <path d="M406 151c31 18 54 40 60 83" />
-          <path d="M295 171c-35 20-53 44-59 85" />
-        </g>
-        <g fontFamily="system-ui" fontSize="16" fontWeight="650" fill="#fff">
-          <text x="28" y="88">Organický opad</text><text x="28" y="160">Ornice · humus a život</text>
-          <text x="28" y="252">Podorničí · zásoba vody</text><text x="28" y="315" fill="#513f2e">Matečný substrát</text>
-        </g>
-        <g fill="#b6d79a"><circle cx="590" cy="94" r="5"/><circle cx="620" cy="86" r="3"/><circle cx="654" cy="97" r="4"/></g>
-      </svg>
-    );
-  }
-
-  if (moduleId === 'zavlaha' || moduleId === 'stanoviste') {
-    return (
-      <svg viewBox="0 0 720 330" role="img" aria-labelledby="water-title water-desc" className="w-full">
-        <title id="water-title">Cesta vody zahradou</title>
-        <desc id="water-desc">Déšť prochází korunou, půdou a kořenovou zónou, část se vsakuje a část vypařuje.</desc>
-        <rect width="720" height="330" rx="24" fill="#edf3e8" />
-        <circle cx="92" cy="70" r="34" fill="#e9b95f" />
-        <g fill="#fff" opacity=".9"><ellipse cx="530" cy="62" rx="78" ry="25"/><ellipse cx="586" cy="62" rx="56" ry="34"/><ellipse cx="478" cy="66" rx="45" ry="29"/></g>
-        <g stroke="#79a9c5" strokeWidth="5" strokeLinecap="round" opacity=".8"><path d="M485 102l-12 34M530 102l-12 34M575 102l-12 34M620 102l-12 34" /></g>
-        <path d="M0 242Q180 214 360 242T720 232V330H0Z" fill="#7e5b3b" />
-        <path d="M315 241v-92M315 174c-45-11-74-36-87-68M315 180c46-17 78-49 95-91" stroke="#3e7145" strokeWidth="12" fill="none" strokeLinecap="round"/>
-        <g fill="#5a915b"><ellipse cx="227" cy="102" rx="55" ry="24" transform="rotate(25 227 102)"/><ellipse cx="407" cy="91" rx="62" ry="25" transform="rotate(-25 407 91)"/><ellipse cx="315" cy="138" rx="55" ry="24"/></g>
-        <g stroke="#d8c099" strokeWidth="3" fill="none"><path d="M315 243c-22 27-21 55-46 75M315 243c18 25 21 54 47 75M315 263l-2 59"/></g>
-        <g fill="#356a7e" fontFamily="system-ui" fontSize="14" fontWeight="650"><text x="470" y="154">srážky</text><text x="430" y="285">vsak</text><text x="145" y="195">transpirace</text></g>
-        <g stroke="#356a7e" strokeWidth="2.5" fill="none"><path d="M475 164l-22 47"/><path d="M427 291l-36 25"/><path d="M198 190c18-30 31-46 37-59"/></g>
-      </svg>
-    );
-  }
-
-  if (moduleId === 'rez') {
-    return (
-      <svg viewBox="0 0 720 330" role="img" aria-labelledby="cut-title cut-desc" className="w-full">
-        <title id="cut-title">Správné vedení řezu větve</title>
-        <desc id="cut-desc">Řez je veden vně větevního kroužku, bez pahýlu a bez poškození kmene.</desc>
-        <rect width="720" height="330" rx="24" fill="#f2efe4" />
-        <path d="M215 330V76c0-42 30-55 65-45 27 8 38 28 39 52l4 247" fill="#7c5636" />
-        <path d="M299 122c80-6 139-35 199-98 22-23 58-15 67 8 8 20-1 39-19 56-67 63-134 95-222 106" fill="#8e6541" />
-        <path d="M306 125c22 11 28 49 15 70" stroke="#caa178" strokeWidth="9" fill="none" />
-        <path d="M338 116c20 18 30 45 25 76" stroke="#2d6843" strokeWidth="5" fill="none" strokeDasharray="9 7" />
-        <line x1="372" y1="98" x2="337" y2="214" stroke="#d2583f" strokeWidth="5" />
-        <g fontFamily="system-ui" fontSize="15" fontWeight="650"><text x="397" y="122" fill="#295f3d">správná linie</text><text x="397" y="150" fill="#b43f2c">řez do kmene</text><text x="118" y="109" fill="#6a5239">větevní kroužek</text></g>
-        <path d="M385 120l-32 20M387 147l-30 12M210 104l91 53" stroke="#6a5239" strokeWidth="2" fill="none" />
-      </svg>
-    );
-  }
-
-  return (
-    <svg viewBox="0 0 720 330" role="img" aria-labelledby="plant-title plant-desc" className="w-full">
-      <title id="plant-title">Základní toky v rostlině</title>
-      <desc id="plant-desc">Kořeny přijímají vodu a minerály, listy světlo a oxid uhličitý; rostlina vytváří cukry.</desc>
-      <rect width="720" height="330" rx="24" fill="#edf3e8" />
-      <path d="M0 252Q180 226 360 249T720 240V330H0Z" fill="#806042" />
-      <path d="M360 251V106" stroke="#417149" strokeWidth="14" strokeLinecap="round"/>
-      <path d="M359 140c-65-5-106-33-124-79M360 154c63-13 108-47 126-96" stroke="#417149" strokeWidth="11" fill="none" strokeLinecap="round"/>
-      <g fill="#659a61"><ellipse cx="225" cy="58" rx="67" ry="29" transform="rotate(24 225 58)"/><ellipse cx="493" cy="56" rx="72" ry="30" transform="rotate(-23 493 56)"/><ellipse cx="360" cy="119" rx="61" ry="27"/></g>
-      <g stroke="#d7bd94" strokeWidth="3" fill="none"><path d="M360 250c-28 27-30 50-58 74M360 250c22 26 26 49 57 75M360 268l-2 58M334 277l-7 43M390 278l8 42"/></g>
-      <g stroke="#37789b" strokeWidth="3" fill="none" strokeDasharray="7 6"><path d="M348 276V154"/><path d="M350 155l-8 14M350 155l8 14"/></g>
-      <g stroke="#c9852f" strokeWidth="3" fill="none" strokeDasharray="7 6"><path d="M373 145v115"/><path d="M373 259l-8-14M373 259l8-14"/></g>
-      <g fontFamily="system-ui" fontSize="15" fontWeight="650"><text x="76" y="75" fill="#3d7844">světlo + CO₂</text><text x="60" y="290" fill="#f7eee1">voda + minerály</text><text x="506" y="170" fill="#8a581d">cukry do míst růstu</text></g>
-    </svg>
-  );
+function sourceLanguage(url: string) {
+  const parsed = new URL(url);
+  const isCzech = parsed.hostname.endsWith('.cz') || /\/legal-content\/CS\//i.test(parsed.pathname);
+  return isCzech ? 'Česky' : 'Anglicky';
 }
 
 function Header({ onHome, onGlossary, onSearch, query, menuOpen, setMenuOpen }: {
@@ -176,6 +101,8 @@ function Sidebar({ view, onView, completed, mobile = false }: { view: View; onVi
 function HomeView({ onView, completed }: { onView: (view: View) => void; completed: string[] }) {
   const totalLessons = modules.reduce((sum, module) => sum + module.lessons.length, 0);
   const professionalCount = Object.keys(professionalChapters).length;
+  const totalSources = Object.values(professionalChapters).reduce((sum, chapter) => sum + chapter.sources.length, 0);
+  const totalProcedures = Object.values(professionalChapters).reduce((sum, chapter) => sum + chapter.sections.filter((section) => section.procedure).length, 0);
   return (
     <div className="mx-auto max-w-6xl px-5 py-8 sm:px-8 lg:px-12 lg:py-12">
       <section className="grid items-center gap-8 border-b pb-12 xl:grid-cols-[1.15fr_.85fr]">
@@ -188,14 +115,22 @@ function HomeView({ onView, completed }: { onView: (view: View) => void; complet
             <span className="inline-flex items-center rounded-full border bg-card px-5 py-3 text-sm font-medium">{professionalCount} odborných kapitol · jednotný obsahový standard</span>
           </div>
         </div>
-        <div className="overflow-hidden rounded-[2rem] border bg-card shadow-xl shadow-primary/10">
-          <img src="/og.png" alt="Zdravá rostlina s odkrytým kořenovým systémem v půdním profilu" className="aspect-video w-full object-cover" />
-          <div className="grid grid-cols-3 border-t text-center text-xs">
-            <div className="p-3"><strong className="block text-lg text-primary">{modules.length}</strong>modulů</div>
-            <div className="border-x p-3"><strong className="block text-lg text-primary">{totalLessons}</strong>lekcí</div>
-            <div className="p-3"><strong className="block text-lg text-primary">4</strong>oblasti praxe</div>
+        <aside className="overflow-hidden rounded-[2rem] border bg-card shadow-xl shadow-primary/10">
+          <div className="p-7 sm:p-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Kontrolní rámec obsahu</p>
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight">Tvrzení musí být dohledatelné</h2>
+            <ul className="mt-6 space-y-4 text-sm leading-6 text-muted-foreground">
+              <li><strong className="text-foreground">Zdroj u každé kapitoly:</strong> autor nebo instituce, přesný odkaz a popis použití.</li>
+              <li><strong className="text-foreground">Postup místo dojmu:</strong> účel, jednotlivé kroky a povinný záznam výsledku.</li>
+              <li><strong className="text-foreground">Bezpečnostní hranice:</strong> upozornění, kdy postup zastavit a přizvat oprávněného specialistu.</li>
+            </ul>
           </div>
-        </div>
+          <div className="grid grid-cols-3 border-t text-center text-xs">
+            <div className="p-4"><strong className="block text-lg text-primary">{totalSources}</strong>zdrojů</div>
+            <div className="border-x p-4"><strong className="block text-lg text-primary">{totalProcedures}</strong>postupů</div>
+            <div className="p-4"><strong className="block text-lg text-primary">{totalLessons}</strong>lekcí</div>
+          </div>
+        </aside>
       </section>
 
       <section className="py-12">
@@ -273,7 +208,9 @@ function ProfessionalContent({ chapter }: { chapter: ProfessionalChapter }) {
       <section className="mt-10 rounded-2xl border bg-card p-6 sm:p-8">
         <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Odborné zdroje kapitoly</p>
         <h2 className="mt-2 text-2xl font-semibold">Použitá opora a další studium</h2>
-        <div className="mt-6 divide-y">{chapter.sources.map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer" className="group grid gap-2 py-4 sm:grid-cols-[1fr_1.2fr_auto]"><div><strong className="text-sm group-hover:text-primary">{source.title}</strong><p className="mt-1 text-xs text-muted-foreground">{source.organisation}</p></div><p className="text-sm leading-6 text-muted-foreground">{source.scope}</p><ArrowRight size={16} className="mt-1 text-primary"/></a>)}</div>
+        <p className="mt-3 text-sm leading-6 text-muted-foreground">Jazyk je uveden před otevřením odkazu. Anglický zdroj je zařazen pouze tehdy, pokud jde o primární odbornou instituci a není nahrazován domněnkou nebo neověřeným překladem.</p>
+        <p className="mt-2 text-xs font-semibold text-primary">Všechny odkazy živě prověřeny <time dateTime="2026-09-01">1. 9. 2026</time>: bez chybových stránek a bez skrytého přesměrování.</p>
+        <div className="mt-6 divide-y">{chapter.sources.map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer" className="group grid gap-2 py-4 sm:grid-cols-[1fr_1.2fr_auto]"><div><strong className="text-sm group-hover:text-primary">{source.title}</strong><div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground"><span>{source.organisation}</span><span className="rounded-full border px-2 py-0.5 font-semibold text-foreground">{sourceLanguage(source.url)}</span></div></div><p className="text-sm leading-6 text-muted-foreground">{source.scope}</p><ArrowRight size={16} className="mt-1 text-primary"/></a>)}</div>
       </section>
     </div>
   );
@@ -305,7 +242,20 @@ function ModuleView({ module, onView, completed, toggleCompleted }: { module: Mo
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-primary">Po dokončení dokážete</p>
           <ul className="mt-5 space-y-4">{module.outcomes.map((outcome) => <li key={outcome} className="flex gap-3 text-sm leading-6"><span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent text-primary"><Check size={13}/></span>{outcome}</li>)}</ul>
         </div>
-        <div className="overflow-hidden rounded-2xl border bg-card p-2"><PlantDiagram moduleId={module.id}/><p className="px-3 pb-3 pt-1 text-xs leading-5 text-muted-foreground">Výkladový obraz: sledujte vztah mezi strukturou, tokem látek a pěstitelským rozhodnutím.</p></div>
+        <nav className="rounded-2xl border bg-card p-6" aria-label="Oddíly odborné kapitoly">
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-primary">Obsah odborné kapitoly</p>
+          <ol className="mt-5 space-y-3">
+            {(professionalChapter?.sections ?? []).slice(0, 6).map((section, sectionIndex) => (
+              <li key={section.title}>
+                <a href={`#${module.id}-professional-${sectionIndex + 1}`} className="group flex gap-3 text-sm leading-5 text-muted-foreground hover:text-foreground">
+                  <span className="font-mono text-xs font-semibold text-primary">{String(sectionIndex + 1).padStart(2, '0')}</span>
+                  <span className="group-hover:underline">{section.title.replace(/^\d+\.\s*/, '')}</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+          {(professionalChapter?.sections.length ?? 0) > 6 && <p className="mt-4 border-t pt-4 text-xs text-muted-foreground">Dalších {(professionalChapter?.sections.length ?? 0) - 6} odborných oddílů pokračuje níže.</p>}
+        </nav>
       </section>
 
       {professionalChapter ? <ProfessionalContent chapter={professionalChapter}/> : <div className="py-10">

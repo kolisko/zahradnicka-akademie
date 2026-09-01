@@ -9,6 +9,7 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "start": "wrangler dev --config dist/server/wrangler.json",
+    "audit:sources": "node --experimental-strip-types scripts/audit-sources.mjs",
     "lint": "oxlint",
     "format": "oxfmt"
   },

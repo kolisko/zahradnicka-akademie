@@ -20,15 +20,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Zahradnická akademie — odborná wiki',
     description: 'Detailní odborné kapitoly pro budoucí profesionální zahradníky, zpracované podle jednotného obsahového standardu.',
-    images: [{ url: '/og.png', width: 1680, height: 945, alt: 'Zahradnická akademie — rostlina s odkrytým kořenovým systémem' }],
     locale: 'cs_CZ',
     type: 'website',
   },
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary',
     title: 'Zahradnická akademie — odborná wiki',
     description: 'Detailní odborné kapitoly pro budoucí profesionální zahradníky.',
-    images: ['/og.png'],
   },
 };
 
