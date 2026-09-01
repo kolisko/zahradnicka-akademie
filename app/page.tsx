@@ -22,6 +22,15 @@ import {
 } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { glossary, modules, type Module } from '@/lib/curriculum';
+import { professionalChapters, type ProfessionalChapter } from '@/lib/professional-content';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
 
 type View = 'home' | 'glossary' | string;
 
@@ -166,17 +175,17 @@ function Sidebar({ view, onView, completed, mobile = false }: { view: View; onVi
 
 function HomeView({ onView, completed }: { onView: (view: View) => void; completed: string[] }) {
   const totalLessons = modules.reduce((sum, module) => sum + module.lessons.length, 0);
-  const totalChecks = modules.reduce((sum, module) => sum + module.checks.length, 0);
+  const professionalCount = Object.keys(professionalChapters).length;
   return (
     <div className="mx-auto max-w-6xl px-5 py-8 sm:px-8 lg:px-12 lg:py-12">
       <section className="grid items-center gap-8 border-b pb-12 xl:grid-cols-[1.15fr_.85fr]">
         <div>
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border bg-card px-3 py-1.5 text-xs font-semibold text-primary shadow-sm"><Sprout size={14}/> Kompletní teoretická příprava</div>
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border bg-card px-3 py-1.5 text-xs font-semibold text-primary shadow-sm"><Sprout size={14}/> Odborná wiki ve výstavbě</div>
           <h1 className="text-balance text-4xl font-semibold leading-[1.07] tracking-[-0.045em] sm:text-6xl">Od kořenů k řemeslu.</h1>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">Systematická česká wiki pro budoucí profesionální zahradníky. Vysvětluje biologii, diagnostiku, realizaci, péči, techniku, bezpečnost i vedení zakázky.</p>
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">Systematická česká učebnice pro budoucí profesionální zahradníky. Odborné kapitoly obsahují souvislý výklad, tabulky, diagnostické postupy, případové studie a dohledatelné zdroje.</p>
           <div className="mt-7 flex flex-wrap gap-3">
             <button onClick={() => onView('botanika')} className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/15">Začít první kapitolou <ArrowRight size={16}/></button>
-            <span className="inline-flex items-center rounded-full border bg-card px-5 py-3 text-sm font-medium">{totalLessons} lekcí · {totalChecks} kontrolních otázek</span>
+            <span className="inline-flex items-center rounded-full border bg-card px-5 py-3 text-sm font-medium">{professionalCount} odborné kapitoly · další se zpracovávají</span>
           </div>
         </div>
         <div className="overflow-hidden rounded-[2rem] border bg-card shadow-xl shadow-primary/10">
@@ -200,6 +209,7 @@ function HomeView({ onView, completed }: { onView: (view: View) => void; complet
               <div className="flex items-center justify-between"><span className="font-mono text-xs font-semibold text-primary">MODUL {String(index + 1).padStart(2, '0')}</span>{completed.includes(module.id) && <CheckCircle2 size={18} className="text-primary"/>}</div>
               <h3 className="mt-7 text-xl font-semibold tracking-tight">{module.title}</h3>
               <p className="mt-2 flex-1 text-sm leading-6 text-muted-foreground">{module.subtitle}</p>
+              <span className={`mt-4 w-fit rounded-full px-2.5 py-1 text-[11px] font-semibold ${professionalChapters[module.id] ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>{professionalChapters[module.id] ? 'ODBORNĚ ROZPRACOVÁNO' : 'ZATÍM STRUČNÁ OSNOVA'}</span>
               <div className="mt-5 flex items-center gap-4 text-xs text-muted-foreground"><span className="flex items-center gap-1.5"><Clock3 size={14}/>{minutesLabel(module.minutes)}</span><span>{module.lessons.length} lekcí</span><ArrowRight size={16} className="ml-auto text-primary transition group-hover:translate-x-1"/></div>
             </button>
           ))}
@@ -215,9 +225,64 @@ function HomeView({ onView, completed }: { onView: (view: View) => void; complet
   );
 }
 
+function ProfessionalContent({ chapter }: { chapter: ProfessionalChapter }) {
+  return (
+    <div className="py-10">
+      <div className="mb-8 rounded-2xl border border-primary/25 bg-primary/5 p-5 sm:p-6">
+        <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+          <span>{chapter.edition}</span><span>•</span><span>rozsah přibližně {chapter.estimatedPages} tiskových stran</span>
+        </div>
+        <p className="mt-4 max-w-3xl leading-7">{chapter.abstract}</p>
+        <div className="mt-4 flex flex-wrap gap-2">{chapter.prerequisites.map((item) => <span key={item} className="rounded-full border bg-card px-3 py-1 text-xs text-muted-foreground">Předpoklad: {item}</span>)}</div>
+      </div>
+
+      <div className="space-y-8">
+        {chapter.sections.map((section, sectionIndex) => (
+          <section key={section.title} id={`${chapter.moduleId}-professional-${sectionIndex + 1}`} className="scroll-mt-24 rounded-2xl border bg-card p-6 shadow-sm sm:p-9">
+            <h2 className="text-2xl font-semibold leading-tight tracking-tight sm:text-3xl">{section.title}</h2>
+            <div className="mt-6 space-y-5 text-[15px] leading-7 text-foreground/90">
+              {section.paragraphs.map((paragraph) => <p key={paragraph.slice(0, 60)}>{paragraph}</p>)}
+            </div>
+
+            {section.table && (
+              <div className="mt-8 overflow-hidden rounded-xl border">
+                <div className="border-b bg-muted/70 px-4 py-3 text-sm font-semibold">{section.table.caption}</div>
+                <Table>
+                  <TableHeader><TableRow>{section.table.headers.map((header) => <TableHead key={header} className="min-w-40 whitespace-normal px-4 py-3 align-top text-xs font-semibold">{header}</TableHead>)}</TableRow></TableHeader>
+                  <TableBody>{section.table.rows.map((row, rowIndex) => <TableRow key={`${section.title}-${rowIndex}`}>{row.map((cell, cellIndex) => <TableCell key={`${cellIndex}-${cell.slice(0, 20)}`} className="min-w-40 whitespace-normal px-4 py-3 align-top text-sm leading-6 text-muted-foreground first:font-semibold first:text-foreground">{cell}</TableCell>)}</TableRow>)}</TableBody>
+                </Table>
+              </div>
+            )}
+
+            {section.procedure && (
+              <aside className="mt-8 rounded-2xl bg-[#203c2b] p-6 text-white sm:p-7">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/60">Pracovní protokol</p>
+                <h3 className="mt-2 text-xl font-semibold">{section.procedure.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-white/75"><strong className="text-white">Cíl:</strong> {section.procedure.purpose}</p>
+                <ol className="mt-5 space-y-3">{section.procedure.steps.map((step, stepIndex) => <li key={step} className="flex gap-3 text-sm leading-6"><span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-white/10 font-mono text-xs">{stepIndex + 1}</span><span>{step}</span></li>)}</ol>
+                <p className="mt-5 border-t border-white/15 pt-4 text-xs leading-5 text-white/70"><strong className="text-white">Povinný záznam:</strong> {section.procedure.record}</p>
+              </aside>
+            )}
+
+            {section.fieldExample && <aside className="mt-7 rounded-xl border-l-4 border-primary bg-accent/45 p-5"><h3 className="font-semibold">{section.fieldExample.title}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{section.fieldExample.text}</p></aside>}
+            {section.warning && <aside className="mt-7 flex gap-3 rounded-xl bg-[#f5e6cc] p-5 text-sm leading-6 text-[#5a3d18]"><CircleAlert size={19} className="mt-0.5 shrink-0"/><p><strong>Pozor:</strong> {section.warning}</p></aside>}
+          </section>
+        ))}
+      </div>
+
+      <section className="mt-10 rounded-2xl border bg-card p-6 sm:p-8">
+        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Odborné zdroje kapitoly</p>
+        <h2 className="mt-2 text-2xl font-semibold">Použitá opora a další studium</h2>
+        <div className="mt-6 divide-y">{chapter.sources.map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer" className="group grid gap-2 py-4 sm:grid-cols-[1fr_1.2fr_auto]"><div><strong className="text-sm group-hover:text-primary">{source.title}</strong><p className="mt-1 text-xs text-muted-foreground">{source.organisation}</p></div><p className="text-sm leading-6 text-muted-foreground">{source.scope}</p><ArrowRight size={16} className="mt-1 text-primary"/></a>)}</div>
+      </section>
+    </div>
+  );
+}
+
 function ModuleView({ module, onView, completed, toggleCompleted }: { module: Module; onView: (view: View) => void; completed: string[]; toggleCompleted: (id: string) => void }) {
   const index = modules.findIndex((item) => item.id === module.id);
   const [openChecks, setOpenChecks] = useState<number[]>([]);
+  const professionalChapter = professionalChapters[module.id];
   return (
     <article className="mx-auto max-w-5xl px-5 py-8 sm:px-8 lg:px-12 lg:py-12">
       <button onClick={() => onView('home')} className="mb-7 inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-foreground"><ArrowLeft size={16}/> Všechny moduly</button>
@@ -243,7 +308,8 @@ function ModuleView({ module, onView, completed, toggleCompleted }: { module: Mo
         <div className="overflow-hidden rounded-2xl border bg-card p-2"><PlantDiagram moduleId={module.id}/><p className="px-3 pb-3 pt-1 text-xs leading-5 text-muted-foreground">Výkladový obraz: sledujte vztah mezi strukturou, tokem látek a pěstitelským rozhodnutím.</p></div>
       </section>
 
-      <div className="py-10">
+      {professionalChapter ? <ProfessionalContent chapter={professionalChapter}/> : <div className="py-10">
+        <aside className="mb-7 flex gap-3 rounded-2xl border border-[#b9873f]/35 bg-[#f7eddc] p-5 text-sm leading-6 text-[#5a3d18]"><CircleAlert size={19} className="mt-0.5 shrink-0"/><p><strong>Tato kapitola zatím není v odborném standardu.</strong> Níže uvedený obsah je pracovní osnova a nesmí být považován za úplnou profesní přípravu.</p></aside>
         <div className="mb-7 flex items-center justify-between"><div><p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Výklad</p><h2 className="mt-2 text-3xl font-semibold tracking-tight">Lekce modulu</h2></div><Play size={20} className="text-primary" aria-hidden="true"/></div>
         <div className="space-y-5">
           {module.lessons.map((lesson, lessonIndex) => (
@@ -254,7 +320,7 @@ function ModuleView({ module, onView, completed, toggleCompleted }: { module: Mo
             </section>
           ))}
         </div>
-      </div>
+      </div>}
 
       <section className="border-t py-10">
         <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Sebekontrola</p>
