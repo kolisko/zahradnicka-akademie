@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-09-07T14:12:46.219Z",
+  "scope": "HTTP dostupnost bibliografie, konkrétních citací a původu/licencí atlasu. Ne obsahová recenze.",
+  "references": 208,
+  "unique": 180,
+  "passed": 179,
+  "redirected": 0,
+  "failed": 1,
+  "issues": [
+    {
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/yard-and-garden-insects/insects-on-indoor-plants",
+      "status": 403,
+      "location": null,
+      "error": null
+    }
+  ]
+}

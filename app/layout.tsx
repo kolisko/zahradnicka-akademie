@@ -15,8 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.SITE_URL ?? 'http://localhost:3000'),
   title: 'Zahradnická akademie — odborná wiki',
+  icons: { icon: [{ url: '/favicon.svg?v=leaf-2', type: 'image/svg+xml' }] },
   description:
-    'Kompletní český teoretický základ pro budoucí profesionální zahradníky s detailním výkladem, pracovními protokoly a dohledatelnými zdroji.',
+    'Česká zahradnická učebnice s výkladem, obrazovým atlasem, procvičováním, pracovními protokoly a dohledatelnými zdroji.',
   openGraph: {
     title: 'Zahradnická akademie — odborná wiki',
     description: 'Detailní odborné kapitoly pro budoucí profesionální zahradníky, zpracované podle jednotného obsahového standardu.',

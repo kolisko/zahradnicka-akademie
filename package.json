@@ -10,6 +10,7 @@
     "build": "vinext build",
     "start": "wrangler dev --config dist/server/wrangler.json",
     "audit:sources": "node --experimental-strip-types scripts/audit-sources.mjs",
+    "test": "node --experimental-strip-types --test scripts/wiki.test.mjs",
     "lint": "oxlint",
     "format": "oxfmt"
   },

@@ -70,4 +70,10 @@
   html { @apply scroll-smooth font-sans; }
   body { @apply bg-background text-foreground; }
   ::selection { background: oklch(0.78 0.12 138 / .45); }
+  :target { scroll-margin-top: 6rem; }
+  [id]:target > p:first-child, [id]:target > h2:first-child { background: oklch(0.905 0.055 132 / .5); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
